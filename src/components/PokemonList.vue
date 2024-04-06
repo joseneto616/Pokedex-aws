@@ -10,8 +10,42 @@
         <input type="text" id="searchPokemon" name="searchPokemon"><br>
         <button @click="getSearchPokemon">Load Pokemon</button>
     </div>
-    <div id="pokedexlist"></div>
+    <div class="card-grid" id="pokedexlist"></div>
 </template>
+
+
+
+<style>
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 2px solid #222222; /* Bordas externas */
+  outline: 2px solid #191853; /* Bordas internas */
+  padding: 16px;
+  width: 100% 
+}
+
+.card h2 {
+  margin-bottom: 10px;
+  font-size: 16px; 
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.card p {
+  margin-bottom: 10px;
+}
+
+</style>
 
 <script>
 import axios from 'axios'
@@ -36,10 +70,9 @@ export default {
 
                                 pokedexlist.innerHTML += `
 
-                                        <div class="card-grid">
                                         <div class="card">
                                             <h2>`+ element.name + `</h2>
-                                            <img src="`+ respose.data.sprites.front_default + `" alt="Card 1">
+                                            <img src="${respose.data.sprites.front_default}" alt="Card 1" style="max-width: 100%; height: 100px;">
                                         </div>
                                         `
                             })
