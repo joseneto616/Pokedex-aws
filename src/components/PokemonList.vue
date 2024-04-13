@@ -1,19 +1,37 @@
 <template>
     <div>
-       <label>INFORME A QUANTIDADE QUE DESEJA LISTAR</label><br>
-        <input type="number" id="quantityPokemon" name="quantityPokemon"><br>
-        <button @click="getPokemon">Load List</button>
+       <label class="label">INFORME A QUANTIDADE QUE DESEJA LISTAR</label><br>
+        <input type="number" id="quantityPokemon" name="quantityPokemon" v-model="quantityPokemon"><br>
+        <button @click="getPokemon">Carregar lista</button>
     </div>
     <div><p></p></div>
     <div>
-        <label>PESQUISE O POKEMON</label><br>
+        <label class="label">PESQUISE O POKEMON</label><br>
         <input type="text" id="searchPokemon" name="searchPokemon"><br>
-        <button @click="getSearchPokemon">Load Pokemon</button>
+        <button @click="getSearchPokemon">Carregar Pokemon</button>
     </div>
     <div class="card-grid" id="pokedexlist"></div>
 </template>
 
 <style>
+
+button {
+    margin-top: 5px;
+    background-color: #F49240;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    
+}
+
+button:hover{
+        background-color: #F9642C ;
+    }
+
+.label {
+    color: black;
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -57,12 +75,13 @@ export default {
     data() {
         return {
             post: [],
+            quantityPokemon: null
         }
     },
     methods: {
         getPokemon() {
-            var quantityPokemon = document.getElementById('quantityPokemon').value
-            axios.get('https://pokeapi.co/api/v2/pokemon?limit=' + quantityPokemon + '&offset=0')
+            // var quantityPokemon = document.getElementById('quantityPokemon').value
+            axios.get('https://pokeapi.co/api/v2/pokemon?limit=' + this.quantityPokemon + '&offset=0')
                 .then((response) => {
                     this.posts = response.data.results
                     var pokedexlist = document.getElementById('pokedexlist')
