@@ -10,10 +10,15 @@ export default{
 </script>
 
 <template>
+  
   <PokemonList />
 </template>
 
 <style scoped>
+img {
+  margin-top: 10px;
+}
+
 header {
   line-height: 1.5;
 }
