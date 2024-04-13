@@ -67,6 +67,7 @@
 .card p {
     margin-bottom: 10px;
 }
+
 </style>
 
 <script>
@@ -97,36 +98,11 @@ export default {
         }
         ,
         async getSearchPokemon() {
-            const pokemons = await this.getPokemon(100);
+            const pokemons = await this.getPokemon(1200);
             var namePokemon = document.getElementById('searchPokemon').value
             const filtered = pokemons.filter(p => p.name.includes(namePokemon));
 
             this.posts = filtered;
-
-            // axios.get('https://pokeapi.co/api/v2/pokemon?limit=1000000&offset=0')
-            //     .then((response) => {
-            //         this.posts = response.data.results
-            //         var pokedexlist = document.getElementById('pokedexlist')
-            //         pokedexlist.innerHTML = "";
-            //         this.posts.forEach(element => {
-            //             if (element.name.includes(namePokemon)) {
-            //                 axios.get(element.url)
-            //                     .then((response) => {
-            //                         pokedexlist.innerHTML += `
-            //                             <div class="card">
-            //                                 <h2>${element.name}</h2>
-            //                                 <img src="${response.data.sprites.front_default}" alt="${element.name}">
-            //                             </div>`;
-            //                     })
-            //                     .catch((error) => {
-            //                         console.log(error)
-            //                     })
-            //             }
-            //         });
-            //     })
-            //     .catch((error) => {
-            //         console.log(error)
-            //     })
         }
     }
 }
