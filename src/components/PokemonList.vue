@@ -18,7 +18,7 @@
     </div>
     <div class="card-grid" id="pokedexlist">
         <div class="card" v-for="element in posts">
-            <h2>{{ element.name }}</h2>
+            <h2><b>{{ element.name }}</b></h2>
             <img v-bind:src="element.sprites.front_default" v-bind:alt="element.name">
         </div>
     </div>
